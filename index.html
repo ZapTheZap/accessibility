@@ -1,9 +1,34 @@
-<iframe
-    width="315"
-    height="560"
-    src="https://www.youtube.com/embed/R-uaJ-2kCY0?autoplay=1"
-    title="YouTube video player"
-    frameborder="0"
-    allow="autoplay; encrypted-media"
-    allowfullscreen>
-</iframe>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YouTube Autoplay</title>
+</head>
+<body>
+    <div id="player"></div>
+
+    <script>
+        // Load YouTube IFrame API
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '560',
+                width: '315',
+                videoId: 'R-uaJ-2kCY0',
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            // Auto play with sound
+            event.target.playVideo();
+        }
+    </script>
+</body>
+</html>
