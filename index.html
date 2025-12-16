@@ -1,33 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>YouTube Autoplay</title>
+    <title>Autoplay Audio</title>
 </head>
 <body>
-    <div id="player"></div>
+    <button onclick="play()">▶ Play Audio</button>
 
     <script>
-        // Load YouTube IFrame API
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        const audio = new Audio();
+        audio.src = 'audio.mp3';
 
-        var player;
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('player', {
-                height: '560',
-                width: '315',
-                videoId: 'R-uaJ-2kCY0',
-                events: {
-                    'onReady': onPlayerReady
-                }
-            });
-        }
-
-        function onPlayerReady(event) {
-            // Auto play with sound
-            event.target.playVideo();
+        function play() {
+            audio.play();
         }
     </script>
 </body>
